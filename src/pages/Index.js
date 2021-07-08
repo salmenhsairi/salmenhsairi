@@ -17,13 +17,13 @@ export default function Index({ setInput }) {
     return { name, selector, sortable, center };
   };
   const columns = [
-    createColumn("Name", "name", true, true),
-    createColumn("Telephone", "telephone", true, true),
-    createColumn("Email", "email", true, true),
-    createColumn("Ville", "ville", true, true),
-    createColumn("Type", "type", true, true),
-    createColumn("Handicap", "handicap", true, true),
-    createColumn("consulter", "action", false, true)
+    createColumn("Name",(row) =>  row["name"], true, true),
+    createColumn("Telephone",(row) =>  row["telephone"], true, true),
+    createColumn("Email", (row) => row["email"], true, true),
+    createColumn("Ville",(row) => row["ville"], true, true),
+    createColumn("Type", (row) => row["type"], true, true),
+    createColumn("Handicap", (row) => row["handicap"], true, true),
+    createColumn("consulter", (row) =>  row["action"], false, true)
   ];
   const fetchData = (limit, page, filter) => {
     return axios

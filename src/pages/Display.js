@@ -7,7 +7,16 @@ import { useState } from "react";
 //http://localhost/applicationMTD/api/fetchAllClients.php
 function Display({ toggleDisplay }) {
   const { id } = useParams();
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({
+    name: "",
+    telephone: "",
+    email: "",
+    id: "",
+    handicap: "",
+    ville: "",
+    lieu: "",
+    type: ""
+  });
 
   const fetchData = () => {
     return axios
