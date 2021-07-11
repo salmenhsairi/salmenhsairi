@@ -3,6 +3,7 @@ import axios from "axios";
 import DataTable from "react-data-table-component";
 import { Link } from "react-router-dom";
 import VisibilityIcon from "@material-ui/icons/Visibility";
+//import "./Index.css";
 
 // http://localhost/applicationMTD/api/displayClient.php?id=6
 
@@ -79,23 +80,6 @@ class Index extends Component {
     });
   }
 
-  // componentDidUpdate(prevProps, prevState, snapshot) {
-  //   this.fetchData(
-  //     prevState.nbrEltperPage,
-  //     prevState.myCurrentPage,
-  //     this.state.input
-  //   ).then((fetchResult) => {
-  //     const rows = fetchResult[0];
-  //     const total = fetchResult[1];
-  //     this.setState({
-  //       clients: rows,
-  //       resetFirstPage: true,
-  //       nombreTotalElement: total,
-  //       pending: false,
-  //     });
-  //   });
-  // }
-
   newElement = (page, totalRows) => {
     this.setState({ pending: true });
     this.fetchData(this.state.nbrEltperPage, page, this.state.input).then(
@@ -132,18 +116,20 @@ class Index extends Component {
   }
 
   filterSearch(e) {
-    this.setState({ pending: true , input : e.target.value });
-    this.fetchData(this.state.nbrEltperPage, this.state.myCurrentPage, e.target.value).then(
-      (fetchResult) => {
-        const rows = fetchResult[0];
-        const total = fetchResult[1];
-        this.setState({
-          clients: rows,
-          nombreTotalElement: total,
-          pending: false,
-        });
-      }
-    );
+    this.setState({ pending: true, input: e.target.value });
+    this.fetchData(
+      this.state.nbrEltperPage,
+      this.state.myCurrentPage,
+      e.target.value
+    ).then((fetchResult) => {
+      const rows = fetchResult[0];
+      const total = fetchResult[1];
+      this.setState({
+        clients: rows,
+        nombreTotalElement: total,
+        pending: false,
+      });
+    });
   }
   render() {
     const finalData = this.state.clients.map((row, index) => {
@@ -161,10 +147,14 @@ class Index extends Component {
 
     return (
       <div className="container">
-        <h1 className="h3 mb-0 text-gray-800" style={{marginTop:"2%"}}>All Clients</h1>
+        <h1 className="h3 mb-0 text-gray-800" style={{ marginTop: "2%" }}>
+          All Clients
+        </h1>
         <input
           value={this.state.input}
-          onChange={(e) => {this.filterSearch(e)}}
+          onChange={(e) => {
+            this.filterSearch(e);
+          }}
           type="text"
           className="form-control bg-light border-0 small"
           placeholder="Search for..."

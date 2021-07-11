@@ -1,5 +1,6 @@
 import React,{Component} from "react";
 import axios from "axios";
+//import "./Index.css";
 
 //http://localhost/applicationMTD/api/fetchAllClients.php
 //function Display({ toggleDisplay })
@@ -201,7 +202,7 @@ class Display extends Component {
                 </div>
                 <div className="row gutters">
                   <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div className="text-right">
+                    <div className="text-right" style={{marginTop:"20px"}}>
                       <a href="/">
                         <button
                           type="button"
